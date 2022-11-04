@@ -89,16 +89,20 @@ type IndexStatsIndexStoreResponse struct {
 
 // IndexStatsIndexIndexingResponse defines index stats index indexing information structure
 type IndexStatsIndexIndexingResponse struct {
-	IndexTotal           int64 `json:"index_total"`
-	IndexTimeInMillis    int64 `json:"index_time_in_millis"`
-	IndexCurrent         int64 `json:"index_current"`
-	IndexFailed          int64 `json:"index_failed"`
-	DeleteTotal          int64 `json:"delete_total"`
-	DeleteTimeInMillis   int64 `json:"delete_time_in_millis"`
-	DeleteCurrent        int64 `json:"delete_current"`
-	NoopUpdateTotal      int64 `json:"noop_update_total"`
-	IsThrottled          bool  `json:"is_throttled"`
-	ThrottleTimeInMillis int64 `json:"throttle_time_in_millis"`
+	IndexTotal                 int64 `json:"index_total"`
+	IndexTimeInMillis          int64 `json:"index_time_in_millis"`
+	IndexCurrent               int64 `json:"index_current"`
+	IndexFailed                int64 `json:"index_failed"`
+	DeleteTotal                int64 `json:"delete_total"`
+	DeleteTimeInMillis         int64 `json:"delete_time_in_millis"`
+	DeleteCurrent              int64 `json:"delete_current"`
+	NoopUpdateTotal            int64 `json:"noop_update_total"`
+	IndexPlanTotal             int64 `json:"index_plan_total"`
+	IndexPlanTimeInMillis      int64 `json:"index_plan_time_in_millis"`
+	IndexToLuceneTotal         int64 `json:"index_to_lucene_total"`
+	IndexToLucenceTimeInMillis int64 `json:"index_to_lucene_time_in_millis"`
+	IsThrottled                bool  `json:"is_throttled"`
+	ThrottleTimeInMillis       int64 `json:"throttle_time_in_millis"`
 }
 
 // IndexStatsIndexGetResponse defines index stats index get information structure

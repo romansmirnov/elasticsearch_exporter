@@ -698,6 +698,54 @@ func NewIndices(logger log.Logger, client *http.Client, url *url.URL, shards boo
 			{
 				Type: prometheus.CounterValue,
 				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_index_plan_total"),
+					"Total indexing index plan count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexPlanTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_plan_time_seconds_total"),
+					"Total indexing index plan time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexPlanTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_index_to_lucene_total"),
+					"Total indexing index to lucene count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexToLuceneTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_to_lucene_time_seconds_total"),
+					"Total indexing index to lucene time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexToLucenceTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
 					prometheus.BuildFQName(namespace, "index_stats", "indexing_throttle_time_seconds_total"),
 					"Total indexing throttle time in seconds",
 					indexLabels.keys(), nil,
