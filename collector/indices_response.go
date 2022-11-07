@@ -103,6 +103,28 @@ type IndexStatsIndexIndexingResponse struct {
 	IndexToLucenceTimeInMillis int64 `json:"index_to_lucene_time_in_millis"`
 	IsThrottled                bool  `json:"is_throttled"`
 	ThrottleTimeInMillis       int64 `json:"throttle_time_in_millis"`
+	IndexLookupTotal           int64 `json:"index_lookup_total"`
+	IndexLookupTimeInMillis    int64 `json:"index_lookup_time_in_millis"`
+	DeleteLookupTotal          int64 `json:"delete_lookup_total"`
+	DeleteLookupTimeInMillis   int64 `json:"delete_lookup_time_in_millis"`
+	IndexLockTotal             int64 `json:"index_lock_total"`
+	IndexLockTimeInMillis      int64 `json:"index_lock_time_in_millis"`
+	DeleteLockTotal            int64 `json:"delete_lock_total"`
+	DeleteLockTimeInMillis     int64 `json:"delete_lock_time_in_millis"`
+	IndexTranslogTotal         int64 `json:"index_translog_total"`
+	IndexTranslogTimeInMillis  int64 `json:"index_translog_time_in_millis"`
+	DeleteTranslogTotal        int64 `json:"delete_translog_total"`
+	DeleteTranslogTimeInMillis int64 `json:"delete_translog_time_in_millis"`
+	IndexVersionMapHit         int64 `json:"index_versionmap_hit"`
+	IndexVersionMapMiss        int64 `json:"index_versionmap_miss"`
+	DeleteVersionMapHit        int64 `json:"delete_versionmap_hit"`
+	DeleteVersionMapMiss       int64 `json:"delete_versionmap_miss"`
+	IndexLookupHit             int64 `json:"index_lookup_hit"`
+	IndexLookupMiss            int64 `json:"index_lookup_miss"`
+	DeleteLookupHit            int64 `json:"delete_lookup_hit"`
+	DeleteLookupMiss           int64 `json:"delete_lookup_miss"`
+	IndexQueueTotal            int64 `json:"index_queue_total"`
+	IndexQueueTimeInMillis     int64 `json:"index_queue_time_in_millis"`
 }
 
 // IndexStatsIndexGetResponse defines index stats index get information structure
