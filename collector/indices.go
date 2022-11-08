@@ -1029,6 +1029,178 @@ func NewIndices(logger log.Logger, client *http.Client, url *url.URL, shards boo
 			{
 				Type: prometheus.CounterValue,
 				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_add_total"),
+					"Total indexing index translog add count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogAddTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_add_time_seconds_total"),
+					"Total indexing index translog add time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogAddTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_add_total"),
+					"Total indexing delete translog add count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogAddTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_add_time_seconds_total"),
+					"Total indexing delete translog add time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogAddTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_seqno_processed_total"),
+					"Total indexing index translog seqno processed count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogSeqnoProcessedTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_seqno_processed_time_seconds_total"),
+					"Total indexing index translog seqno processed time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogSeqnoProcessedTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_seqno_processed_total"),
+					"Total indexing delete translog seqno processed count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogSeqnoProcessedTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_seqno_processed_time_seconds_total"),
+					"Total indexing delete translog seqno processed time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogSeqnoProcessedTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_seqno_persisted_total"),
+					"Total indexing index translog seqno persisted count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogSeqnoPersistedTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_translog_seqno_persisted_time_seconds_total"),
+					"Total indexing index translog seqno persisted time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexTranslogSeqnoPersistedTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_seqno_persisted_total"),
+					"Total indexing delete translog seqno persisted count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogSeqnoPersistedTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_delete_translog_seqno_persisted_time_seconds_total"),
+					"Total indexing delete translog seqno persisted time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.DeleteTranslogSeqnoPersistedTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_under_lock_total"),
+					"Total indexing index under lock count",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexUnderLockTotal)
+				},
+				Labels: indexLabels,
+			},
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
+					prometheus.BuildFQName(namespace, "index_stats", "indexing_indexing_index_under_lock_time_seconds_total"),
+					"Total indexing index under lock time in seconds",
+					indexLabels.keys(), nil,
+				),
+				Value: func(indexStats IndexStatsIndexResponse) float64 {
+					return float64(indexStats.Total.Indexing.IndexUnderLockTimeInMillis) / 1000
+				},
+				Labels: indexLabels,
+			},
+
+			{
+				Type: prometheus.CounterValue,
+				Desc: prometheus.NewDesc(
 					prometheus.BuildFQName(namespace, "index_stats", "get_time_seconds_total"),
 					"Total get time in seconds",
 					indexLabels.keys(), nil,
